@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trá»£ lĂ½ áº£o</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>G</text></svg>" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #e1bee7);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      background-color: #fff;
+      border-bottom: 1px solid #ccc;
+    }
+    header img {
+      width: 24px;
+      height: 24px;
+    }
+    header h1 {
+      font-size: 20px;
+      margin: 0;
+      color: #333;
+    }
+    header a {
+      margin-left: auto;
+      font-size: 14px;
+      color: #0078d4;
+      text-decoration: none;
+    }
+    #chat {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .message {
+      max-width: 70%;
+      margin-bottom: 16px;
+      padding: 10px 15px;
+      border-radius: 15px;
+      white-space: pre-wrap;
+    }
+    .user {
+      background-color: #0078d4;
+      color: white;
+      align-self: flex-end;
+      border-bottom-right-radius: 0;
+    }
+    .bot {
+      background-color: #f1f1f1;
+      color: #333;
+      align-self: flex-start;
+      border-bottom-left-radius: 0;
+    }
+    .input-area {
+      padding: 10px;
+      background: #fff;
+      border-top: 1px solid #ccc;
+    }
+    .input-area > div {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    textarea {
+      flex: 1;
+      resize: none;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #0078d4;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #searchToggle.active {
+      background-color: #000;
+      color: #fff;
+    }
+    #placeholder {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100px;
+      text-align: center;
+      color: #666;
+      margin-top: 40px;
+      font-style: italic;
+      font-size: 40px;
+      font-weight: bold;
+      opacity: 1;
+      transition: opacity 0.8s ease;
+    }
+    #topbar {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #ffffffcc;
+  border-bottom: 1px solid #ccc;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  margin-right: 10px;
+  color: #0078d4;
+  font-family: system-ui, sans-serif;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+nav{
+  letter-spacing: 1px;
+  padding: 1rem;
+}
+
+nav ul{
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+nav a{
+  color: #1e1e1e;
+  font-weight: bold;
+}
+
+nav a:hover{
+  color: #ffd700;
+}
+
+  </style>
+</head>
+<body>
+  <header id="topbar">
+  <div class="logo" aria-hidden="true">G</div>
+  <div class="title">Trá»£ lĂ½ áº£o</div>
+  <nav>
+    <ul>
+         <li><a href="dksd.html">Äiá»u khoáº£n sá»­ dá»¥ng</a></li>
+         <li><a href="csbm.html">ChĂ­nh sĂ¡ch báº£o máº­t</a></li>
+    </ul>
+  </nav>
+</header>
+
+  <div id="placeholder">Báº¡n Ä‘ang nghÄ© gĂ¬ tháº¿? Chia sáº» cho tá»› vá»›iâ€¦</div>
+  <div id="chat"></div>
+  <div class="input-area">
+    <div>
+      <button id="searchToggle">đŸ” TĂ¬m kiáº¿m trĂªn Internet</button>
+      <textarea id="question" placeholder="Nháº­p tin nháº¯n..."></textarea>
+      <button onclick="sendMessage()">Gá»­i</button>
+    </div>
+  </div>
+
+  <script>
+    const chat = document.getElementById("chat");
+    const input = document.getElementById("question");
+    const searchToggle = document.getElementById("searchToggle");
+    let internetMode = false;
+
+    searchToggle.addEventListener("click", () => {
+      internetMode = !internetMode;
+      searchToggle.classList.toggle("active", internetMode);
+    });
+
+    input.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
+        sendMessage();
+      }
+    });
+
+    async function searchGoogle(question) {
+      const apiKey = "AIzaSyCLd8SgROMIM2479M2ZgQ5AEdgjcE-4PLE";
+      const cx = "f5f83897432f243aa";
+      const url = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${cx}&q=${encodeURIComponent(question)}`;
+
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        if (data.items && data.items.length > 0) {
+          return data.items.slice(0, 3).map(item =>
+            `â€¢ ${item.title}\n${item.snippet}\n${item.link}`
+          ).join("\n\n");
+        } else {
+          return "KhĂ´ng tĂ¬m tháº¥y thĂ´ng tin trĂªn Google.";
+        }
+      } catch (err) {
+        return "â ï¸ KhĂ´ng thá»ƒ truy cáº­p Google Search lĂºc nĂ y.";
+      }
+    }
+
+    async function sendMessage() {
+      const question = input.value.trim();
+      if (!question) return;
+
+      addMessage(question, "user");
+      document.getElementById("placeholder").style.opacity = "0";
+      input.value = "";
+
+      showTypingIndicator();
+
+      const shouldSearch = internetMode;
+      let webInfo = "";
+
+      if (shouldSearch) {
+        updateTypingIndicator("Äang tĂ¬m kiáº¿m trĂªn Google...");
+        webInfo = await searchGoogle(question);
+        addMessage("đŸ“Œ Káº¿t quáº£ tá»« Google:\n" + webInfo, "bot");
+      }
+
+      const messages = [
+        {
+          role: "system",
+          content: "Báº¡n lĂ  trá»£ lĂ½ AI thĂ¢n thiá»‡n, nĂ³i chuyá»‡n tá»± nhiĂªn nhÆ° ngÆ°á»i tháº­t. Æ¯u tiĂªn dĂ¹ng thĂ´ng tin tá»« Google náº¿u cĂ³."
+        },
+        {
+          role: "user",
+          content: `ThĂ´ng tin tá»« Google:\n${webInfo}\n\nCĂ¢u há»i: ${question}\n\nHĂ£y tráº£ lá»i chĂ­nh xĂ¡c dá»±a trĂªn thĂ´ng tin tá»« Google á»Ÿ trĂªn. Náº¿u cĂ³ tĂªn ngÆ°á»i, chá»©c vá»¥ hoáº·c ngĂ y thĂ¡ng, hĂ£y trĂ­ch dáº«n láº¡i.`
+        }
+      ];
+
+      try {
+        const response = await fetch("http://localhost:3000/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ messages })
+        });
+
+        if (!response.ok) throw new Error(`Lá»—i server: ${response.status}`);
+
+        const result = await response.json();
+        const reply = result.choices?.[0]?.message?.content || "KhĂ´ng cĂ³ pháº£n há»“i tá»« Groq.";
+
+        hideTypingIndicator();
+        addMessage(reply, "bot");
+      } catch (error) {
+        console.error("âŒ Lá»—i khi gá»i API:", error);
+        hideTypingIndicator();
+        addMessage("â ï¸ CĂ³ lá»—i xáº£y ra khi gá»i Groq: " + error.message, "bot");
+      }
+    }
+
+    function addMessage(text, sender) {
+      const msg = document.createElement("div");
+      msg.className = `message ${sender}`;
+      chat.appendChild(msg);
+
+      if (sender === "bot") {
+        typeText(msg, text);
+      } else {
+        msg.textContent = text;
+      }
+
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    function typeText(element, text, speed = 5) {
+      let i = 0;
+      const interval = setInterval(() => {
+        if (i < text.length) {
+          element.textContent += text.charAt(i);
+          i++;
+          chat.scrollTop = chat.scrollHeight;
+        } else {
+          clearInterval(interval);
+        }
+      }, speed);
+    }
+
+    function showTypingIndicator() {
+      const typing = document.createElement("div");
+      typing.id = "typing-indicator";
+      typing.className = "message bot";
+      typing.textContent = "Trá»£ lĂ½ áº£o Ä‘ang gĂµ...";
+      chat.appendChild(typing);
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    function updateTypingIndicator(text) {
+      const typing = document.getElementById("typing-indicator");
+      if (typing) typing.textContent = text;
+    }
+
+    function hideTypingIndicator() {
+      const typing = document.getElementById("typing-indicator");
+      if (typing) typing.remove();
+    }
+  </script>
+</body>
+</html>
