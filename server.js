@@ -21,8 +21,10 @@ app.get('/', (req, res) => {
 
 app.post("/chat", async (req, res) => {
   const { messages } = req.body;
+  console.log("📨 Nhận được tin nhắn:", messages);
 
   try {
+    console.log("🔑 Đang gọi Groq API với key:", process.env.GROQ_API_KEY ? "Có key" : "Không có key");
     const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -30,17 +32,19 @@ app.post("/chat", async (req, res) => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "llama-3.1-8b-instant",
+        model: "llama2-70b-4096",
         messages: messages
       })
     });
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error("❌ Lỗi từ Groq:", errorText);
+      console.error("❌ Lỗi từ Groq. Status:", response.status);
+      console.error("❌ Chi tiết:", errorText);
       return res.status(response.status).json({ error: "Lỗi từ Groq", detail: errorText });
     }
 
+    console.log("✅ Groq trả lời thành công");
     const result = await response.json();
     res.json(result);
   } catch (err) {
