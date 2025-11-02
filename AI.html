@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html><!DOCTYPE html><!DOCTYPE html><!DOCTYPE html>
+﻿<!DOCTYPE html><!DOCTYPE html><!DOCTYPE html><!DOCTYPE html><!DOCTYPE html>
 
 <html lang="vi">
 
@@ -6,7 +6,7 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"><head><html lang="vi"><html lang="vi">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><head><html lang="vi">
 
     <title>Trợ lý ảo</title>
 
@@ -14,372 +14,753 @@
 
     <style>
 
-        body {    <meta name="viewport" content="width=device-width, initial-scale=1.0"><head>
+        * {    <meta name="viewport" content="width=device-width, initial-scale=1.0"><head><html lang="vi"><html lang="vi">
 
-            font-family: Arial, sans-serif;
+            box-sizing: border-box;
 
-            background: linear-gradient(to right, #e0f7fa, #e1bee7);    <title>Trợ lý ảo</title>
+            margin: 0;    <title>Trợ lý ảo</title>
 
-            margin: 0;
+            padding: 0;
 
-            padding: 0;    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>G</text></svg>">    <meta charset="UTF-8">  <meta charset="UTF-8" />
-
-            display: flex;
-
-            flex-direction: column;    <style>
-
-            height: 100vh;
-
-        }        body {    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        }    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>G</text></svg>">    <meta charset="UTF-8">
 
 
 
-        #topbar {            font-family: Arial, sans-serif;
+        body {    <style>
 
-            display: flex;
+            font-family: system-ui, -apple-system, Arial, sans-serif;
 
-            align-items: center;            background: linear-gradient(to right, #e0f7fa, #e1bee7);    <title>AI Chat</title>  <title>Trợ lý ảo</title>
+            background: linear-gradient(135deg, #e0f7fa 0%, #e1bee7 100%);        body {    <meta name="viewport" content="width=device-width, initial-scale=1.0"><head>
 
-            padding: 10px 20px;
+            min-height: 100vh;
 
-            background-color: #ffffffcc;            margin: 0;
+            display: flex;            font-family: Arial, sans-serif;
 
-            border-bottom: 1px solid #ccc;
+            flex-direction: column;
 
-            position: sticky;            padding: 0;    <style>  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>G</text></svg>" />
+        }            background: linear-gradient(to right, #e0f7fa, #e1bee7);    <title>Trợ lý ảo</title>
 
-            top: 0;
 
-            z-index: 10;            display: flex;
 
-        }
+        #topbar {            margin: 0;
 
-            flex-direction: column;        body {  <style>
+            background: rgba(255, 255, 255, 0.9);
+
+            padding: 1rem;            padding: 0;    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>G</text></svg>">    <meta charset="UTF-8">  <meta charset="UTF-8" />
+
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+            display: flex;            display: flex;
+
+            align-items: center;
+
+            gap: 1rem;            flex-direction: column;    <style>
+
+            position: sticky;
+
+            top: 0;            height: 100vh;
+
+            z-index: 100;
+
+        }        }        body {    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
 
         .logo {
 
-            font-size: 28px;            height: 100vh;
+            font-size: 1.75rem;
 
-            font-weight: bold;
-
-            margin-right: 10px;        }            margin: 0;    body {
+            font-weight: bold;        #topbar {            font-family: Arial, sans-serif;
 
             color: #0078d4;
 
-            font-family: system-ui, sans-serif;
+        }            display: flex;
 
-        }
 
-        #topbar {            padding: 20px;      font-family: Arial, sans-serif;
 
-        .title {
+        .title {            align-items: center;            background: linear-gradient(to right, #e0f7fa, #e1bee7);    <title>AI Chat</title>  <title>Trợ lý ảo</title>
 
-            font-size: 22px;            display: flex;
+            font-size: 1.25rem;
 
-            font-weight: bold;
+            font-weight: 600;            padding: 10px 20px;
 
-            color: #333;            align-items: center;            font-family: Arial, sans-serif;      background: linear-gradient(to right, #e0f7fa, #e1bee7);
+            color: #333;
 
-        }
+        }            background-color: #ffffffcc;            margin: 0;
 
-            padding: 10px 20px;
 
-        nav {
 
-            margin-left: auto;            background-color: #ffffffcc;            background-color: #f0f0f0;      margin: 0;
+        nav {            border-bottom: 1px solid #ccc;
 
-        }
+            margin-left: auto;
 
-            border-bottom: 1px solid #ccc;
+        }            position: sticky;            padding: 0;    <style>  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>G</text></svg>" />
 
-        nav ul {
 
-            list-style: none;            position: sticky;        }      padding: 0;
+
+        nav ul {            top: 0;
 
             display: flex;
 
-            gap: 2rem;            top: 0;
+            gap: 2rem;            z-index: 10;            display: flex;
 
-            margin: 0;
-
-            padding: 0;            z-index: 10;      display: flex;
-
-        }
-
-        }
-
-        nav a {
-
-            color: #1e1e1e;        #chat-container {      flex-direction: column;
-
-            font-weight: bold;
-
-            text-decoration: none;        .logo {
-
-        }
-
-            font-size: 28px;            max-width: 800px;      height: 100vh;
-
-        nav a:hover {
-
-            color: #0078d4;            font-weight: bold;
-
-        }
-
-            margin-right: 10px;            margin: 0 auto;    }
-
-        #chat {
-
-            flex: 1;            color: #0078d4;
-
-            padding: 20px;
-
-            overflow-y: auto;            font-family: system-ui, sans-serif;            background-color: white;    header {
-
-            display: flex;
-
-            flex-direction: column;        }
-
-            gap: 10px;
-
-            max-width: 1200px;            border-radius: 10px;      display: flex;
-
-            margin: 0 auto;
-
-            width: 100%;        .title {
-
-        }
-
-            font-size: 22px;            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);      align-items: center;
-
-        .message {
-
-            max-width: 70%;            font-weight: bold;
-
-            margin-bottom: 16px;
-
-            padding: 10px 15px;            color: #333;            padding: 20px;      gap: 10px;
-
-            border-radius: 15px;
-
-            white-space: pre-wrap;        }
-
-        }
-
-        }      padding: 10px 20px;
-
-        .user {
-
-            background-color: #0078d4;        nav {
-
-            color: white;
-
-            align-self: flex-end;            margin-left: auto;      background-color: #fff;
-
-            border-bottom-right-radius: 0;
+            list-style: none;
 
         }        }
 
 
 
-        .bot {        #chat-history {      border-bottom: 1px solid #ccc;
+        nav a {            flex-direction: column;        body {  <style>
 
-            background-color: #f1f1f1;
+            color: #333;
 
-            color: #333;        nav ul {
+            text-decoration: none;        .logo {
 
-            align-self: flex-start;
+            font-weight: 500;
 
-            border-bottom-left-radius: 0;            list-style: none;            height: 400px;    }
+            transition: color 0.2s;            font-size: 28px;            height: 100vh;
 
         }
 
+            font-weight: bold;
+
+        nav a:hover {
+
+            color: #0078d4;            margin-right: 10px;        }            margin: 0;    body {
+
+        }
+
+            color: #0078d4;
+
+        main {
+
+            flex: 1;            font-family: system-ui, sans-serif;
+
+            padding: 1rem;
+
+            max-width: 1200px;        }
+
+            margin: 0 auto;
+
+            width: 100%;        #topbar {            padding: 20px;      font-family: Arial, sans-serif;
+
             display: flex;
+
+            flex-direction: column;        .title {
+
+        }
+
+            font-size: 22px;            display: flex;
+
+        #placeholder {
+
+            text-align: center;            font-weight: bold;
+
+            color: #666;
+
+            font-size: 1.5rem;            color: #333;            align-items: center;            font-family: Arial, sans-serif;      background: linear-gradient(to right, #e0f7fa, #e1bee7);
+
+            margin: 2rem 0;
+
+            font-style: italic;        }
+
+            opacity: 1;
+
+            transition: opacity 0.3s;            padding: 10px 20px;
+
+        }
+
+        nav {
+
+        #chat {
+
+            flex: 1;            margin-left: auto;            background-color: #ffffffcc;            background-color: #f0f0f0;      margin: 0;
+
+            display: flex;
+
+            flex-direction: column;        }
+
+            gap: 1rem;
+
+            margin-bottom: 1rem;            border-bottom: 1px solid #ccc;
+
+        }
+
+        nav ul {
+
+        .message {
+
+            max-width: 80%;            list-style: none;            position: sticky;        }      padding: 0;
+
+            padding: 1rem;
+
+            border-radius: 1rem;            display: flex;
+
+            line-height: 1.5;
+
+            animation: fadeIn 0.3s ease;            gap: 2rem;            top: 0;
+
+            word-wrap: break-word;
+
+            white-space: pre-wrap;            margin: 0;
+
+        }
+
+            padding: 0;            z-index: 10;      display: flex;
+
+        @keyframes fadeIn {
+
+            from { opacity: 0; transform: translateY(10px); }        }
+
+            to { opacity: 1; transform: translateY(0); }
+
+        }        }
+
+
+
+        .user {        nav a {
+
+            background: #0078d4;
+
+            color: white;            color: #1e1e1e;        #chat-container {      flex-direction: column;
+
+            align-self: flex-end;
+
+            border-bottom-right-radius: 0.25rem;            font-weight: bold;
+
+        }
+
+            text-decoration: none;        .logo {
+
+        .bot {
+
+            background: white;        }
+
+            color: #333;
+
+            align-self: flex-start;            font-size: 28px;            max-width: 800px;      height: 100vh;
+
+            border-bottom-left-radius: 0.25rem;
+
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);        nav a:hover {
+
+        }
+
+            color: #0078d4;            font-weight: bold;
 
         .input-area {
 
-            padding: 10px;            gap: 2rem;            overflow-y: auto;    header img {
+            background: white;        }
 
-            background: #fff;
+            padding: 1rem;
 
-            border-top: 1px solid #ccc;            margin: 0;
+            border-radius: 0.5rem;            margin-right: 10px;            margin: 0 auto;    }
 
-        }
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-            padding: 0;            border: 1px solid #ccc;      width: 24px;
-
-        .input-area > div {
-
-            display: flex;        }
-
-            gap: 10px;
-
-            align-items: center;            padding: 10px;      height: 24px;
-
-            max-width: 1200px;
-
-            margin: 0 auto;        nav a {
-
-            padding: 0 10px;
-
-        }            color: #1e1e1e;            margin-bottom: 20px;    }
+        }        #chat {
 
 
 
-        textarea {            font-weight: bold;
-
-            flex: 1;
-
-            resize: none;            text-decoration: none;            white-space: pre-wrap;    header h1 {
-
-            padding: 10px;
-
-            font-size: 16px;        }
-
-            border-radius: 8px;
-
-            border: 1px solid #ccc;        }      font-size: 20px;
-
-            font-family: inherit;
-
-            min-height: 40px;        nav a:hover {
-
-            max-height: 150px;
-
-        }            color: #0078d4;      margin: 0;
-
-
-
-        button {        }
-
-            padding: 10px 20px;
-
-            font-size: 16px;        #input-container {      color: #333;
-
-            background-color: #0078d4;
-
-            color: white;        #chat {
-
-            border: none;
-
-            border-radius: 8px;            flex: 1;            display: flex;    }
-
-            cursor: pointer;
-
-            transition: background-color 0.2s;            padding: 20px;
-
-            white-space: nowrap;
-
-        }            overflow-y: auto;            gap: 10px;    header a {
-
-
-
-        button:hover {        }
-
-            background-color: #006cbd;
-
-        }        }      margin-left: auto;
-
-
-
-        #searchToggle.active {        .message {
-
-            background-color: #004578;
-
-        }            max-width: 70%;      font-size: 14px;
-
-
-
-        #placeholder {            margin-bottom: 16px;
+        .input-container {            flex: 1;            color: #0078d4;
 
             display: flex;
 
-            justify-content: center;            padding: 10px 15px;        #user-input {      color: #0078d4;
-
-            align-items: center;
-
-            color: #666;            border-radius: 15px;
-
-            margin: 40px 0;
-
-            font-style: italic;            white-space: pre-wrap;            flex-grow: 1;      text-decoration: none;
-
-            font-size: 24px;
-
-            opacity: 1;        }
-
-            transition: opacity 0.8s ease;
-
-        }            padding: 10px;    }
-
-
-
-        #typing-indicator {        .user {
-
-            font-style: italic;
-
-            color: #666;            background-color: #0078d4;            border: 1px solid #ccc;    #chat {
-
-            align-self: flex-start;
-
-            margin-bottom: 8px;            color: white;
+            gap: 0.5rem;            padding: 20px;
 
         }
 
-            align-self: flex-end;            border-radius: 5px;      flex: 1;
+            overflow-y: auto;            font-family: system-ui, sans-serif;            background-color: white;    header {
+
+        #searchToggle {
+
+            padding: 0.75rem;            display: flex;
+
+            border-radius: 0.5rem;
+
+            border: none;            flex-direction: column;        }
+
+            background: #f0f0f0;
+
+            color: #333;            gap: 10px;
+
+            cursor: pointer;
+
+            transition: all 0.2s;            max-width: 1200px;            border-radius: 10px;      display: flex;
+
+            white-space: nowrap;
+
+        }            margin: 0 auto;
+
+
+
+        #searchToggle:hover {            width: 100%;        .title {
+
+            background: #e0e0e0;
+
+        }        }
+
+
+
+        #searchToggle.active {            font-size: 22px;            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);      align-items: center;
+
+            background: #0078d4;
+
+            color: white;        .message {
+
+        }
+
+            max-width: 70%;            font-weight: bold;
+
+        textarea {
+
+            flex: 1;            margin-bottom: 16px;
+
+            padding: 0.75rem;
+
+            border: 1px solid #ddd;            padding: 10px 15px;            color: #333;            padding: 20px;      gap: 10px;
+
+            border-radius: 0.5rem;
+
+            font-family: inherit;            border-radius: 15px;
+
+            font-size: 1rem;
+
+            resize: none;            white-space: pre-wrap;        }
+
+            min-height: 2.5rem;
+
+            max-height: 150px;        }
+
+            line-height: 1.5;
+
+        }        }      padding: 10px 20px;
+
+
+
+        textarea:focus {        .user {
+
+            outline: none;
+
+            border-color: #0078d4;            background-color: #0078d4;        nav {
+
+        }
+
+            color: white;
+
+        button[type="submit"] {
+
+            padding: 0.75rem 1.5rem;            align-self: flex-end;            margin-left: auto;      background-color: #fff;
+
+            background: #0078d4;
+
+            color: white;            border-bottom-right-radius: 0;
+
+            border: none;
+
+            border-radius: 0.5rem;        }        }
+
+            cursor: pointer;
+
+            font-weight: 500;
+
+            transition: background 0.2s;
+
+        }        .bot {        #chat-history {      border-bottom: 1px solid #ccc;
+
+
+
+        button[type="submit"]:hover {            background-color: #f1f1f1;
+
+            background: #006cbd;
+
+        }            color: #333;        nav ul {
+
+
+
+        #typing {            align-self: flex-start;
+
+            color: #666;
+
+            font-style: italic;            border-bottom-left-radius: 0;            list-style: none;            height: 400px;    }
+
+            padding: 0.5rem 1rem;
+
+            animation: fadeIn 0.3s ease;        }
+
+        }
+
+            display: flex;
 
         @media (max-width: 768px) {
 
-            .message {            border-bottom-right-radius: 0;
+            .message {        .input-area {
 
-                max-width: 85%;
+                max-width: 90%;
 
-            }            margin-left: auto;            font-size: 16px;      padding: 20px;
-
-
-
-            #searchToggle {        }
-
-                padding: 10px;
-
-            }        }      overflow-y: auto;
+            }            padding: 10px;            gap: 2rem;            overflow-y: auto;    header img {
 
 
 
-            .title {        .bot {
-
-                font-size: 18px;
-
-            }            background-color: #f1f1f1;    }
-
-
-
-            nav ul {            color: #333;
+            nav ul {            background: #fff;
 
                 gap: 1rem;
 
-            }            align-self: flex-start;        #send-button {    .message {
+            }            border-top: 1px solid #ccc;            margin: 0;
+
+
+
+            .title {        }
+
+                font-size: 1rem;
+
+            }            padding: 0;            border: 1px solid #ccc;      width: 24px;
+
+
+
+            #searchToggle span {        .input-area > div {
+
+                display: none;
+
+            }            display: flex;        }
 
         }
 
-    </style>            border-bottom-left-radius: 0;
+    </style>            gap: 10px;
 
 </head>
 
-<body>        }            padding: 10px 20px;      max-width: 70%;
+<body>            align-items: center;            padding: 10px;      height: 24px;
 
     <header id="topbar">
 
-        <div class="logo" aria-hidden="true">G</div>
+        <div class="logo" aria-hidden="true">G</div>            max-width: 1200px;
 
         <div class="title">Trợ lý ảo</div>
 
-        <nav>        .input-area {            background-color: #007bff;      margin-bottom: 16px;
+        <nav>            margin: 0 auto;        nav a {
 
             <ul>
 
-                <li><a href="dksd.html">Điều khoản sử dụng</a></li>            padding: 10px;
+                <li><a href="dksd.html">Điều khoản sử dụng</a></li>            padding: 0 10px;
 
+                <li><a href="csbm.html">Chính sách bảo mật</a></li>
+
+            </ul>        }            color: #1e1e1e;            margin-bottom: 20px;    }
+
+        </nav>
+
+    </header>
+
+
+
+    <main>        textarea {            font-weight: bold;
+
+        <div id="placeholder">Bạn đang nghĩ gì thế? Chia sẻ cho tớ với...</div>
+
+        <div id="chat"></div>            flex: 1;
+
+        <div class="input-area">
+
+            <div class="input-container">            resize: none;            text-decoration: none;            white-space: pre-wrap;    header h1 {
+
+                <button id="searchToggle" title="Bật/tắt tìm kiếm">
+
+                    🔍 <span>Tìm kiếm trên Internet</span>            padding: 10px;
+
+                </button>
+
+                <textarea             font-size: 16px;        }
+
+                    id="question" 
+
+                    placeholder="Nhập tin nhắn..."             border-radius: 8px;
+
+                    rows="1"
+
+                    onInput="this.style.height = ''; this.style.height = Math.min(this.scrollHeight, 150) + 'px'"            border: 1px solid #ccc;        }      font-size: 20px;
+
+                ></textarea>
+
+                <button type="submit" onclick="sendMessage()">Gửi</button>            font-family: inherit;
+
+            </div>
+
+        </div>            min-height: 40px;        nav a:hover {
+
+    </main>
+
+            max-height: 150px;
+
+    <script>
+
+        const chat = document.getElementById('chat');        }            color: #0078d4;      margin: 0;
+
+        const input = document.getElementById('question');
+
+        const searchToggle = document.getElementById('searchToggle');
+
+        let internetMode = false;
+
+        button {        }
+
+        searchToggle.addEventListener('click', () => {
+
+            internetMode = !internetMode;            padding: 10px 20px;
+
+            searchToggle.classList.toggle('active');
+
+        });            font-size: 16px;        #input-container {      color: #333;
+
+
+
+        input.addEventListener('keydown', (event) => {            background-color: #0078d4;
+
+            if (event.key === 'Enter' && !event.shiftKey) {
+
+                event.preventDefault();            color: white;        #chat {
+
+                sendMessage();
+
+            }            border: none;
+
+        });
+
+            border-radius: 8px;            flex: 1;            display: flex;    }
+
+        async function searchGoogle(question) {
+
+            try {            cursor: pointer;
+
+                const response = await fetch(`https://www.googleapis.com/customsearch/v1?key=AIzaSyCLd8SgROMIM2479M2ZgQ5AEdgjcE-4PLE&cx=f5f83897432f243aa&q=${encodeURIComponent(question)}`);
+
+                const data = await response.json();            transition: background-color 0.2s;            padding: 20px;
+
+                
+
+                if (data.items?.length > 0) {            white-space: nowrap;
+
+                    return data.items.slice(0, 3).map(item => 
+
+                        `• ${item.title}\n${item.snippet}\n${item.link}`        }            overflow-y: auto;            gap: 10px;    header a {
+
+                    ).join('\n\n');
+
+                }
+
+                
+
+                return 'Không tìm thấy thông tin trên Google.';        button:hover {        }
+
+            } catch (error) {
+
+                console.error('Google Search error:', error);            background-color: #006cbd;
+
+                return '🛑 Không thể truy cập Google Search lúc này.';
+
+            }        }        }      margin-left: auto;
+
+        }
+
+
+
+        async function sendMessage() {
+
+            const question = input.value.trim();        #searchToggle.active {        .message {
+
+            if (!question) return;
+
+            background-color: #004578;
+
+            // Add user message
+
+            addMessage(question, 'user');        }            max-width: 70%;      font-size: 14px;
+
+            
+
+            // Clear input and placeholder
+
+            input.value = '';
+
+            input.style.height = 'auto';        #placeholder {            margin-bottom: 16px;
+
+            document.getElementById('placeholder').style.opacity = '0';
+
+            display: flex;
+
+            showTyping();
+
+            justify-content: center;            padding: 10px 15px;        #user-input {      color: #0078d4;
+
+            try {
+
+                let webInfo = '';            align-items: center;
+
+                if (internetMode) {
+
+                    updateTyping('Đang tìm kiếm trên Internet...');            color: #666;            border-radius: 15px;
+
+                    webInfo = await searchGoogle(question);
+
+                    addMessage('🔍 Kết quả từ Google:\n' + webInfo, 'bot');            margin: 40px 0;
+
+                }
+
+            font-style: italic;            white-space: pre-wrap;            flex-grow: 1;      text-decoration: none;
+
+                updateTyping('Đang suy nghĩ...');
+
+            font-size: 24px;
+
+                const response = await fetch('https://aichat-v6nq.onrender.com/chat', {
+
+                    method: 'POST',            opacity: 1;        }
+
+                    headers: { 'Content-Type': 'application/json' },
+
+                    body: JSON.stringify({            transition: opacity 0.8s ease;
+
+                        message: internetMode
+
+                            ? `Thông tin từ Google:\n${webInfo}\n\nCâu hỏi: ${question}\n\nHãy trả lời dựa trên thông tin từ Google ở trên nếu liên quan.`        }            padding: 10px;    }
+
+                            : question
+
+                    })
+
+                });
+
+        #typing-indicator {        .user {
+
+                if (!response.ok) {
+
+                    throw new Error(`Lỗi server: ${response.status}`);            font-style: italic;
+
+                }
+
+            color: #666;            background-color: #0078d4;            border: 1px solid #ccc;    #chat {
+
+                const data = await response.json();
+
+                addMessage(data.response, 'bot');            align-self: flex-start;
+
+            } catch (error) {
+
+                console.error('Error:', error);            margin-bottom: 8px;            color: white;
+
+                addMessage('❌ ' + error.message, 'bot');
+
+            } finally {        }
+
+                hideTyping();
+
+            }            align-self: flex-end;            border-radius: 5px;      flex: 1;
+
+        }
+
+        @media (max-width: 768px) {
+
+        function addMessage(text, type) {
+
+            const message = document.createElement('div');            .message {            border-bottom-right-radius: 0;
+
+            message.className = `message ${type}`;
+
+            chat.appendChild(message);                max-width: 85%;
+
+
+
+            if (type === 'bot') {            }            margin-left: auto;            font-size: 16px;      padding: 20px;
+
+                typeText(message, text);
+
+            } else {
+
+                message.textContent = text;
+
+            }            #searchToggle {        }
+
+
+
+            chat.scrollTop = chat.scrollHeight;                padding: 10px;
+
+        }
+
+            }        }      overflow-y: auto;
+
+        function typeText(element, text, speed = 30) {
+
+            let i = 0;
+
+            element.textContent = '';
+
+                        .title {        .bot {
+
+            const interval = setInterval(() => {
+
+                if (i < text.length) {                font-size: 18px;
+
+                    element.textContent += text[i];
+
+                    i++;            }            background-color: #f1f1f1;    }
+
+                    chat.scrollTop = chat.scrollHeight;
+
+                } else {
+
+                    clearInterval(interval);
+
+                }            nav ul {            color: #333;
+
+            }, speed);
+
+        }                gap: 1rem;
+
+
+
+        function showTyping() {            }            align-self: flex-start;        #send-button {    .message {
+
+            if (!document.getElementById('typing')) {
+
+                const typing = document.createElement('div');        }
+
+                typing.id = 'typing';
+
+                typing.textContent = 'Đang suy nghĩ...';    </style>            border-bottom-left-radius: 0;
+
+                chat.appendChild(typing);
+
+                chat.scrollTop = chat.scrollHeight;</head>
+
+            }
+
+        }<body>        }            padding: 10px 20px;      max-width: 70%;
+
+
+
+        function updateTyping(text) {    <header id="topbar">
+
+            const typing = document.getElementById('typing');
+
+            if (typing) typing.textContent = text;        <div class="logo" aria-hidden="true">G</div>
+
+        }
+
+        <div class="title">Trợ lý ảo</div>
+
+        function hideTyping() {
+
+            const typing = document.getElementById('typing');        <nav>        .input-area {            background-color: #007bff;      margin-bottom: 16px;
+
+            if (typing) typing.remove();
+
+        }            <ul>
+
+    </script>
+
+</body>                <li><a href="dksd.html">Điều khoản sử dụng</a></li>            padding: 10px;
+
+</html>
                 <li><a href="csbm.html">Chính sách bảo mật</a></li>
 
             </ul>            background: #fff;            color: white;      padding: 10px 15px;
