@@ -1,318 +1,632 @@
-﻿<!DOCTYPE html><!DOCTYPE html>
+﻿<!DOCTYPE html><!DOCTYPE html><!DOCTYPE html>
 
-<html lang="vi"><html lang="vi">
+<html lang="vi">
 
-<head><head>
+<head><html lang="vi"><html lang="vi">
 
-    <meta charset="UTF-8">  <meta charset="UTF-8" />
+    <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><head>
 
-    <title>AI Chat</title>  <title>Trợ lý ảo</title>
+    <title>Trợ lý ảo</title>
 
-    <style>  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>G</text></svg>" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>G</text></svg>">    <meta charset="UTF-8">  <meta charset="UTF-8" />
 
-        body {  <style>
+    <style>
 
-            margin: 0;    body {
+        body {    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-            padding: 20px;      font-family: Arial, sans-serif;
+            font-family: Arial, sans-serif;
 
-            font-family: Arial, sans-serif;      background: linear-gradient(to right, #e0f7fa, #e1bee7);
+            background: linear-gradient(to right, #e0f7fa, #e1bee7);    <title>AI Chat</title>  <title>Trợ lý ảo</title>
 
-            background-color: #f0f0f0;      margin: 0;
+            margin: 0;
 
-        }      padding: 0;
+            padding: 0;    <style>  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>G</text></svg>" />
 
-      display: flex;
+            display: flex;
+
+            flex-direction: column;        body {  <style>
+
+            height: 100vh;
+
+        }            margin: 0;    body {
+
+
+
+        #topbar {            padding: 20px;      font-family: Arial, sans-serif;
+
+            display: flex;
+
+            align-items: center;            font-family: Arial, sans-serif;      background: linear-gradient(to right, #e0f7fa, #e1bee7);
+
+            padding: 10px 20px;
+
+            background-color: #ffffffcc;            background-color: #f0f0f0;      margin: 0;
+
+            border-bottom: 1px solid #ccc;
+
+            position: sticky;        }      padding: 0;
+
+            top: 0;
+
+            z-index: 10;      display: flex;
+
+        }
 
         #chat-container {      flex-direction: column;
 
-            max-width: 800px;      height: 100vh;
+        .logo {
 
-            margin: 0 auto;    }
+            font-size: 28px;            max-width: 800px;      height: 100vh;
 
-            background-color: white;    header {
+            font-weight: bold;
+
+            margin-right: 10px;            margin: 0 auto;    }
+
+            color: #0078d4;
+
+            font-family: system-ui, sans-serif;            background-color: white;    header {
+
+        }
 
             border-radius: 10px;      display: flex;
 
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);      align-items: center;
+        .title {
 
-            padding: 20px;      gap: 10px;
+            font-size: 22px;            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);      align-items: center;
+
+            font-weight: bold;
+
+            color: #333;            padding: 20px;      gap: 10px;
+
+        }
 
         }      padding: 10px 20px;
 
-      background-color: #fff;
+        nav {
+
+            margin-left: auto;      background-color: #fff;
+
+        }
 
         #chat-history {      border-bottom: 1px solid #ccc;
 
-            height: 400px;    }
+        nav ul {
 
-            overflow-y: auto;    header img {
+            list-style: none;            height: 400px;    }
 
-            border: 1px solid #ccc;      width: 24px;
+            display: flex;
+
+            gap: 2rem;            overflow-y: auto;    header img {
+
+            margin: 0;
+
+            padding: 0;            border: 1px solid #ccc;      width: 24px;
+
+        }
 
             padding: 10px;      height: 24px;
 
-            margin-bottom: 20px;    }
+        nav a {
 
-            white-space: pre-wrap;    header h1 {
+            color: #1e1e1e;            margin-bottom: 20px;    }
+
+            font-weight: bold;
+
+            text-decoration: none;            white-space: pre-wrap;    header h1 {
+
+        }
 
         }      font-size: 20px;
 
-      margin: 0;
+        nav a:hover {
+
+            color: #0078d4;      margin: 0;
+
+        }
 
         #input-container {      color: #333;
 
-            display: flex;    }
+        #chat {
 
-            gap: 10px;    header a {
+            flex: 1;            display: flex;    }
+
+            padding: 20px;
+
+            overflow-y: auto;            gap: 10px;    header a {
+
+        }
 
         }      margin-left: auto;
 
-      font-size: 14px;
+        .message {
 
-        #user-input {      color: #0078d4;
+            max-width: 70%;      font-size: 14px;
 
-            flex-grow: 1;      text-decoration: none;
+            margin-bottom: 16px;
+
+            padding: 10px 15px;        #user-input {      color: #0078d4;
+
+            border-radius: 15px;
+
+            white-space: pre-wrap;            flex-grow: 1;      text-decoration: none;
+
+        }
 
             padding: 10px;    }
 
-            border: 1px solid #ccc;    #chat {
+        .user {
 
-            border-radius: 5px;      flex: 1;
+            background-color: #0078d4;            border: 1px solid #ccc;    #chat {
 
-            font-size: 16px;      padding: 20px;
+            color: white;
+
+            align-self: flex-end;            border-radius: 5px;      flex: 1;
+
+            border-bottom-right-radius: 0;
+
+            margin-left: auto;            font-size: 16px;      padding: 20px;
+
+        }
 
         }      overflow-y: auto;
 
-    }
+        .bot {
 
-        #send-button {    .message {
+            background-color: #f1f1f1;    }
 
-            padding: 10px 20px;      max-width: 70%;
+            color: #333;
 
-            background-color: #007bff;      margin-bottom: 16px;
+            align-self: flex-start;        #send-button {    .message {
 
-            color: white;      padding: 10px 15px;
+            border-bottom-left-radius: 0;
 
-            border: none;      border-radius: 15px;
+        }            padding: 10px 20px;      max-width: 70%;
 
-            border-radius: 5px;      white-space: pre-wrap;
 
-            cursor: pointer;    }
 
-            font-size: 16px;    .user {
+        .input-area {            background-color: #007bff;      margin-bottom: 16px;
 
-        }      background-color: #0078d4;
+            padding: 10px;
 
-      color: white;
+            background: #fff;            color: white;      padding: 10px 15px;
 
-        #send-button:hover {      align-self: flex-end;
+            border-top: 1px solid #ccc;
 
-            background-color: #0056b3;      border-bottom-right-radius: 0;
+        }            border: none;      border-radius: 15px;
 
-        }    }
 
-    .bot {
 
-        .user-message {      background-color: #f1f1f1;
+        .input-area > div {            border-radius: 5px;      white-space: pre-wrap;
 
-            color: #007bff;      color: #333;
+            display: flex;
 
-            margin-bottom: 10px;      align-self: flex-start;
+            gap: 10px;            cursor: pointer;    }
 
-        }      border-bottom-left-radius: 0;
+            align-items: center;
 
-    }
+            max-width: 1200px;            font-size: 16px;    .user {
+
+            margin: 0 auto;
+
+        }        }      background-color: #0078d4;
+
+
+
+        textarea {      color: white;
+
+            flex: 1;
+
+            resize: none;        #send-button:hover {      align-self: flex-end;
+
+            padding: 10px;
+
+            font-size: 16px;            background-color: #0056b3;      border-bottom-right-radius: 0;
+
+            border-radius: 8px;
+
+            border: 1px solid #ccc;        }    }
+
+            font-family: inherit;
+
+        }    .bot {
+
+
+
+        button {        .user-message {      background-color: #f1f1f1;
+
+            padding: 10px 20px;
+
+            font-size: 16px;            color: #007bff;      color: #333;
+
+            background-color: #0078d4;
+
+            color: white;            margin-bottom: 10px;      align-self: flex-start;
+
+            border: none;
+
+            border-radius: 8px;        }      border-bottom-left-radius: 0;
+
+            cursor: pointer;
+
+            transition: background-color 0.2s;    }
+
+        }
 
         .ai-message {    .input-area {
 
-            color: #28a745;      padding: 10px;
+        button:hover {
+
+            background-color: #006cbd;            color: #28a745;      padding: 10px;
+
+        }
 
             margin-bottom: 10px;      background: #fff;
 
-        }      border-top: 1px solid #ccc;
+        #searchToggle.active {
+
+            background-color: #004578;        }      border-top: 1px solid #ccc;
+
+        }
 
     }
 
-        #thinking-indicator {    .input-area > div {
+        #placeholder {
 
-            display: none;      display: flex;
+            display: flex;        #thinking-indicator {    .input-area > div {
 
-            color: #666;      gap: 10px;
+            justify-content: center;
 
-            margin-top: 10px;      align-items: center;
+            align-items: center;            display: none;      display: flex;
 
-        }    }
+            height: 100px;
 
-    </style>    textarea {
+            text-align: center;            color: #666;      gap: 10px;
 
-</head>      flex: 1;
+            color: #666;
 
-<body>      resize: none;
+            margin-top: 40px;            margin-top: 10px;      align-items: center;
 
-    <div id="chat-container">      padding: 10px;
+            font-style: italic;
 
-        <div id="chat-history">      font-size: 16px;
+            font-size: 40px;        }    }
 
-            <!-- Tin nhắn sẽ được hiển thị ở đây -->      border-radius: 8px;
+            font-weight: bold;
 
-        </div>      border: 1px solid #ccc;
+            opacity: 1;    </style>    textarea {
 
-        <div id="input-container">    }
+            transition: opacity 0.8s ease;
 
-            <input type="text" id="user-input" placeholder="Nhập tin nhắn của bạn...">    button {
+        }</head>      flex: 1;
 
-            <button id="send-button">Gửi</button>      padding: 10px 20px;
 
-        </div>      font-size: 16px;
 
-        <div id="thinking-indicator">AI đang suy nghĩ...</div>      background-color: #0078d4;
+        #typing-indicator {<body>      resize: none;
 
-    </div>      color: white;
+            font-style: italic;
 
-      border: none;
+            color: #666;    <div id="chat-container">      padding: 10px;
 
-    <script>      border-radius: 8px;
+        }
 
-        const chatHistory = document.getElementById('chat-history');      cursor: pointer;
+    </style>        <div id="chat-history">      font-size: 16px;
 
-        const userInput = document.getElementById('user-input');    }
+</head>
 
-        const sendButton = document.getElementById('send-button');    #searchToggle.active {
+<body>            <!-- Tin nhắn sẽ được hiển thị ở đây -->      border-radius: 8px;
 
-        const thinkingIndicator = document.getElementById('thinking-indicator');      background-color: #000;
+    <header id="topbar">
 
-      color: #fff;
+        <div class="logo" aria-hidden="true">G</div>        </div>      border: 1px solid #ccc;
 
-        let isProcessing = false;    }
+        <div class="title">Trợ lý ảo</div>
 
-    #placeholder {
+        <nav>        <div id="input-container">    }
 
-        async function sendMessage() {      display: flex;
+            <ul>
 
-            if (isProcessing || !userInput.value.trim()) return;      justify-content: center;
+                <li><a href="dksd.html">Điều khoản sử dụng</a></li>            <input type="text" id="user-input" placeholder="Nhập tin nhắn của bạn...">    button {
+
+                <li><a href="csbm.html">Chính sách bảo mật</a></li>
+
+            </ul>            <button id="send-button">Gửi</button>      padding: 10px 20px;
+
+        </nav>
+
+    </header>        </div>      font-size: 16px;
+
+
+
+    <div id="placeholder">Bạn đang nghĩ gì thế? Chia sẻ cho tớ với...</div>        <div id="thinking-indicator">AI đang suy nghĩ...</div>      background-color: #0078d4;
+
+    <div id="chat"></div>
+
+    <div class="input-area">    </div>      color: white;
+
+        <div>
+
+            <button id="searchToggle">🔍 Tìm kiếm trên Internet</button>      border: none;
+
+            <textarea id="question" placeholder="Nhập tin nhắn..." rows="1"></textarea>
+
+            <button onclick="sendMessage()">Gửi</button>    <script>      border-radius: 8px;
+
+        </div>
+
+    </div>        const chatHistory = document.getElementById('chat-history');      cursor: pointer;
+
+
+
+    <script>        const userInput = document.getElementById('user-input');    }
+
+        const chat = document.getElementById("chat");
+
+        const input = document.getElementById("question");        const sendButton = document.getElementById('send-button');    #searchToggle.active {
+
+        const searchToggle = document.getElementById("searchToggle");
+
+        let internetMode = false;        const thinkingIndicator = document.getElementById('thinking-indicator');      background-color: #000;
+
+
+
+        // Auto-resize textarea as user types      color: #fff;
+
+        input.addEventListener('input', function() {
+
+            this.style.height = 'auto';        let isProcessing = false;    }
+
+            this.style.height = Math.min(this.scrollHeight, 150) + 'px';
+
+        });    #placeholder {
+
+
+
+        searchToggle.addEventListener("click", () => {        async function sendMessage() {      display: flex;
+
+            internetMode = !internetMode;
+
+            searchToggle.classList.toggle("active", internetMode);            if (isProcessing || !userInput.value.trim()) return;      justify-content: center;
+
+        });
 
       align-items: center;
 
-            const userMessage = userInput.value.trim();      height: 100px;
+        input.addEventListener("keydown", function(event) {
 
-            appendMessage('Người dùng: ' + userMessage, 'user-message');      text-align: center;
+            if (event.key === "Enter" && !event.shiftKey) {            const userMessage = userInput.value.trim();      height: 100px;
 
-            userInput.value = '';      color: #666;
+                event.preventDefault();
 
-      margin-top: 40px;
+                sendMessage();            appendMessage('Người dùng: ' + userMessage, 'user-message');      text-align: center;
 
-            isProcessing = true;      font-style: italic;
+            }
+
+        });            userInput.value = '';      color: #666;
+
+
+
+        async function searchGoogle(question) {      margin-top: 40px;
+
+            const apiKey = "AIzaSyCLd8SgROMIM2479M2ZgQ5AEdgjcE-4PLE";
+
+            const cx = "f5f83897432f243aa";            isProcessing = true;      font-style: italic;
+
+            const url = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${cx}&q=${encodeURIComponent(question)}`;
 
             thinkingIndicator.style.display = 'block';      font-size: 40px;
 
-      font-weight: bold;
+            try {
 
-            try {      opacity: 1;
+                const res = await fetch(url);      font-weight: bold;
 
-                const response = await fetch('https://aichat-v6nq.onrender.com/chat', {      transition: opacity 0.8s ease;
+                const data = await res.json();
 
-                    method: 'POST',    }
+                if (data.items && data.items.length > 0) {            try {      opacity: 1;
 
-                    headers: {    #topbar {
+                    return data.items.slice(0, 3).map(item =>
 
-                        'Content-Type': 'application/json'  display: flex;
+                        `• ${item.title}\n${item.snippet}\n${item.link}`                const response = await fetch('https://aichat-v6nq.onrender.com/chat', {      transition: opacity 0.8s ease;
 
-                    },  align-items: center;
+                    ).join("\n\n");
 
-                    body: JSON.stringify({ message: userMessage })  padding: 10px 20px;
+                } else {                    method: 'POST',    }
 
-                });  background-color: #ffffffcc;
+                    return "Không tìm thấy thông tin trên Google.";
 
-  border-bottom: 1px solid #ccc;
+                }                    headers: {    #topbar {
 
-                const data = await response.json();  position: sticky;
+            } catch (err) {
+
+                return "🛑 Không thể truy cập Google Search lúc này.";                        'Content-Type': 'application/json'  display: flex;
+
+            }
+
+        }                    },  align-items: center;
+
+
+
+        async function sendMessage() {                    body: JSON.stringify({ message: userMessage })  padding: 10px 20px;
+
+            const question = input.value.trim();
+
+            if (!question) return;                });  background-color: #ffffffcc;
+
+
+
+            addMessage(question, "user");  border-bottom: 1px solid #ccc;
+
+            document.getElementById("placeholder").style.opacity = "0";
+
+            input.value = "";                const data = await response.json();  position: sticky;
+
+            input.style.height = 'auto';
 
                 appendMessage('AI: ' + data.response, 'ai-message');  top: 0;
 
+            showTypingIndicator();
+
             } catch (error) {  z-index: 10;
 
-                console.error('Error:', error);}
+            const shouldSearch = internetMode;
 
-                appendMessage('AI: Xin lỗi, đã có lỗi xảy ra. Vui lòng thử lại sau.', 'ai-message');
+            let webInfo = "";                console.error('Error:', error);}
 
-            }.logo {
 
-  font-size: 28px;
 
-            isProcessing = false;  font-weight: bold;
+            if (shouldSearch) {                appendMessage('AI: Xin lỗi, đã có lỗi xảy ra. Vui lòng thử lại sau.', 'ai-message');
 
-            thinkingIndicator.style.display = 'none';  margin-right: 10px;
+                updateTypingIndicator("Đang tìm kiếm trên Google...");
 
-        }  color: #0078d4;
+                webInfo = await searchGoogle(question);            }.logo {
 
-  font-family: system-ui, sans-serif;
+                addMessage("🕵️‍♂️ Kết quả từ Google:\n" + webInfo, "bot");
 
-        function appendMessage(message, className) {}
+            }  font-size: 28px;
+
+
+
+            try {            isProcessing = false;  font-weight: bold;
+
+                const response = await fetch("https://aichat-v6nq.onrender.com/chat", {
+
+                    method: "POST",            thinkingIndicator.style.display = 'none';  margin-right: 10px;
+
+                    headers: { "Content-Type": "application/json" },
+
+                    body: JSON.stringify({        }  color: #0078d4;
+
+                        message: shouldSearch 
+
+                            ? `Thông tin từ Google:\n${webInfo}\n\nCâu hỏi: ${question}\n\nHãy trả lời dựa trên thông tin từ Google ở trên nếu liên quan.`  font-family: system-ui, sans-serif;
+
+                            : question
+
+                    })        function appendMessage(message, className) {}
+
+                });
 
             const messageElement = document.createElement('div');
 
+                if (!response.ok) throw new Error(`Lỗi server: ${response.status}`);
+
             messageElement.textContent = message;.title {
 
-            messageElement.className = className;  font-size: 22px;
+                const result = await response.json();
 
-            chatHistory.appendChild(messageElement);  font-weight: bold;
+                hideTypingIndicator();            messageElement.className = className;  font-size: 22px;
 
-            chatHistory.scrollTop = chatHistory.scrollHeight;  color: #333;
+                addMessage(result.response, "bot");
 
-        }}
+            } catch (error) {            chatHistory.appendChild(messageElement);  font-weight: bold;
+
+                console.error("🛑 Lỗi khi gọi API:", error);
+
+                hideTypingIndicator();            chatHistory.scrollTop = chatHistory.scrollHeight;  color: #333;
+
+                addMessage("🛑 Có lỗi xảy ra: " + error.message, "bot");
+
+            }        }}
+
+        }
 
 nav{
 
-        sendButton.addEventListener('click', sendMessage);  letter-spacing: 1px;
+        function addMessage(text, sender) {
 
-        userInput.addEventListener('keypress', (e) => {  padding: 1rem;
+            const msg = document.createElement("div");        sendButton.addEventListener('click', sendMessage);  letter-spacing: 1px;
 
-            if (e.key === 'Enter') {}
+            msg.className = `message ${sender}`;
 
-                sendMessage();
+            chat.appendChild(msg);        userInput.addEventListener('keypress', (e) => {  padding: 1rem;
 
-            }nav ul{
 
-        });  list-style: none;
+
+            if (sender === "bot") {            if (e.key === 'Enter') {}
+
+                typeText(msg, text);
+
+            } else {                sendMessage();
+
+                msg.textContent = text;
+
+            }            }nav ul{
+
+
+
+            chat.scrollTop = chat.scrollHeight;        });  list-style: none;
+
+        }
 
     </script>  display: flex;
 
-</body>  justify-content: center;
+        function typeText(element, text, speed = 5) {
 
-</html>  gap: 2rem;
-}
+            let i = 0;</body>  justify-content: center;
 
-nav a{
-  color: #1e1e1e;
-  font-weight: bold;
-}
+            const interval = setInterval(() => {
 
-nav a:hover{
+                if (i < text.length) {</html>  gap: 2rem;
+
+                    element.textContent += text.charAt(i);}
+
+                    i++;
+
+                    chat.scrollTop = chat.scrollHeight;nav a{
+
+                } else {  color: #1e1e1e;
+
+                    clearInterval(interval);  font-weight: bold;
+
+                }}
+
+            }, speed);
+
+        }nav a:hover{
+
   color: #ffd700;
-}
 
-  </style>
-</head>
-<body>
-  <header id="topbar">
-  <div class="logo" aria-hidden="true">G</div>
-  <div class="title">Trợ lý ảo</div>
+        function showTypingIndicator() {}
+
+            const typing = document.createElement("div");
+
+            typing.id = "typing-indicator";  </style>
+
+            typing.className = "message bot";</head>
+
+            typing.textContent = "Trợ lý ảo đang gõ...";<body>
+
+            chat.appendChild(typing);  <header id="topbar">
+
+            chat.scrollTop = chat.scrollHeight;  <div class="logo" aria-hidden="true">G</div>
+
+        }  <div class="title">Trợ lý ảo</div>
+
   <nav>
-    <ul>
-         <li><a href="dksd.html">Điều khoản sử dụng</a></li>
-         <li><a href="csbm.html">Chính sách bảo mật</a></li>
-    </ul>
-  </nav>
-</header>
 
-  <div id="placeholder">Bạn đang nghĩ gì thế? Chia sẻ cho tớ với...</div>
-  <div id="chat"></div>
-  <div class="input-area">
-    <div>
-      <button id="searchToggle">🔍 Tìm kiếm trên Internet</button>
+        function updateTypingIndicator(text) {    <ul>
+
+            const typing = document.getElementById("typing-indicator");         <li><a href="dksd.html">Điều khoản sử dụng</a></li>
+
+            if (typing) typing.textContent = text;         <li><a href="csbm.html">Chính sách bảo mật</a></li>
+
+        }    </ul>
+
+  </nav>
+
+        function hideTypingIndicator() {</header>
+
+            const typing = document.getElementById("typing-indicator");
+
+            if (typing) typing.remove();  <div id="placeholder">Bạn đang nghĩ gì thế? Chia sẻ cho tớ với...</div>
+
+        }  <div id="chat"></div>
+
+    </script>  <div class="input-area">
+
+</body>    <div>
+
+</html>      <button id="searchToggle">🔍 Tìm kiếm trên Internet</button>
       <textarea id="question" placeholder="Nhập tin nhắn..."></textarea>
       <button onclick="sendMessage()">Gửi</button>
     </div>
