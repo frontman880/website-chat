@@ -1,14 +1,23 @@
-﻿const express = require("express"); // đŸ‘ˆ THĂM DĂ’NG NĂ€Y
+const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const fetch = require("node-fetch");
+const path = require("path");
 
 dotenv.config();
 const app = express();
-app.use(cors({
-  origin: process.env.FRONTEND_URL || "http://127.0.0.1:5500"
-}));
+
+// CORS - allow all requests
+app.use(cors());
+
+// Serve static files (AI.html, style.css, etc.) from project root
+app.use(express.static(__dirname));
 app.use(express.json());
+
+// Optional: serve AI.html at root so visiting / in browser returns the UI
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'AI.html'));
+});
 
 app.post("/chat", async (req, res) => {
   const { messages } = req.body;
@@ -28,19 +37,19 @@ app.post("/chat", async (req, res) => {
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error("âŒ Lá»—i tá»« Groq:", errorText);
-      return res.status(response.status).json({ error: "Lá»—i tá»« Groq", detail: errorText });
+      console.error("❌ Lỗi từ Groq:", errorText);
+      return res.status(response.status).json({ error: "Lỗi từ Groq", detail: errorText });
     }
 
     const result = await response.json();
     res.json(result);
   } catch (err) {
-    console.error("âŒ Lá»—i khi gá»i Groq:", err);
-    res.status(500).json({ error: "Lá»—i server", detail: err.message });
+    console.error("❌ Lỗi khi gọi Groq:", err);
+    res.status(500).json({ error: "Lỗi server", detail: err.message });
   }
 });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`âœ… Server Ä‘ang cháº¡y táº¡i http://localhost:${PORT}`);
+  console.log(`✅ Server đang chạy tại http://localhost:${PORT}`);
 });
