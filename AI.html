@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <title>Trá»£ lĂ½ áº£o</title>
+  <title>Trợ lý ảo</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>G</text></svg>" />
   <style>
     body {
@@ -156,22 +156,22 @@ nav a:hover{
 <body>
   <header id="topbar">
   <div class="logo" aria-hidden="true">G</div>
-  <div class="title">Trá»£ lĂ½ áº£o</div>
+  <div class="title">Trợ lý ảo</div>
   <nav>
     <ul>
-         <li><a href="dksd.html">Äiá»u khoáº£n sá»­ dá»¥ng</a></li>
-         <li><a href="csbm.html">ChĂ­nh sĂ¡ch báº£o máº­t</a></li>
+         <li><a href="dksd.html">Điều khoản sử dụng</a></li>
+         <li><a href="csbm.html">Chính sách bảo mật</a></li>
     </ul>
   </nav>
 </header>
 
-  <div id="placeholder">Báº¡n Ä‘ang nghÄ© gĂ¬ tháº¿? Chia sáº» cho tá»› vá»›iâ€¦</div>
+  <div id="placeholder">Bạn đang nghĩ gì thế? Chia sẻ cho tớ với…</div>
   <div id="chat"></div>
   <div class="input-area">
     <div>
-      <button id="searchToggle">đŸ” TĂ¬m kiáº¿m trĂªn Internet</button>
-      <textarea id="question" placeholder="Nháº­p tin nháº¯n..."></textarea>
-      <button onclick="sendMessage()">Gá»­i</button>
+      <button id="searchToggle">🔍 Tìm kiếm trên Internet</button>
+      <textarea id="question" placeholder="Nhập tin nhắn..."></textarea>
+      <button onclick="sendMessage()">Gửi</button>
     </div>
   </div>
 
@@ -206,10 +206,10 @@ nav a:hover{
             `â€¢ ${item.title}\n${item.snippet}\n${item.link}`
           ).join("\n\n");
         } else {
-          return "KhĂ´ng tĂ¬m tháº¥y thĂ´ng tin trĂªn Google.";
+          return "Không tìm thấy thông tin trên Google.";
         }
       } catch (err) {
-        return "â ï¸ KhĂ´ng thá»ƒ truy cáº­p Google Search lĂºc nĂ y.";
+        return "🛑 Không thể truy cập Google Search lúc này.";
       }
     }
 
@@ -227,40 +227,40 @@ nav a:hover{
       let webInfo = "";
 
       if (shouldSearch) {
-        updateTypingIndicator("Äang tĂ¬m kiáº¿m trĂªn Google...");
+        updateTypingIndicator("Đang tìm kiếm trên Google...");
         webInfo = await searchGoogle(question);
-        addMessage("đŸ“Œ Káº¿t quáº£ tá»« Google:\n" + webInfo, "bot");
+        addMessage("🕵️‍♂️ Kết quả từ Google:\n" + webInfo, "bot");
       }
 
       const messages = [
         {
           role: "system",
-          content: "Báº¡n lĂ  trá»£ lĂ½ AI thĂ¢n thiá»‡n, nĂ³i chuyá»‡n tá»± nhiĂªn nhÆ° ngÆ°á»i tháº­t. Æ¯u tiĂªn dĂ¹ng thĂ´ng tin tá»« Google náº¿u cĂ³."
+          content: "Bạn là trợ lý AI thân thiện, nói chuyện tự nhiên như người thật. Ưu tiên dùng thông tin từ Google nếu có."
         },
         {
           role: "user",
-          content: `ThĂ´ng tin tá»« Google:\n${webInfo}\n\nCĂ¢u há»i: ${question}\n\nHĂ£y tráº£ lá»i chĂ­nh xĂ¡c dá»±a trĂªn thĂ´ng tin tá»« Google á»Ÿ trĂªn. Náº¿u cĂ³ tĂªn ngÆ°á»i, chá»©c vá»¥ hoáº·c ngĂ y thĂ¡ng, hĂ£y trĂ­ch dáº«n láº¡i.`
+          content: `Thông tin từ Google:\n${webInfo}\n\nCâu hỏi: ${question}\n\nHãy trả lời chính xác dựa trên thông tin từ Google ở trên. Nếu có tên người, chức vụ hoặc ngày tháng, hãy trích dẫn lại.`
         }
       ];
 
       try {
-        const response = await fetch("http://localhost:3000/chat", {
+        const response = await fetch("https://website-chat-8hyf.onrender.com/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ messages })
         });
 
-        if (!response.ok) throw new Error(`Lá»—i server: ${response.status}`);
+        if (!response.ok) throw new Error(`Lỗi server: ${response.status}`);
 
         const result = await response.json();
-        const reply = result.choices?.[0]?.message?.content || "KhĂ´ng cĂ³ pháº£n há»“i tá»« Groq.";
+        const reply = result.choices?.[0]?.message?.content || "Không có phản hồi từ Groq.";
 
         hideTypingIndicator();
         addMessage(reply, "bot");
       } catch (error) {
-        console.error("âŒ Lá»—i khi gá»i API:", error);
+        console.error("🛑 Lỗi khi gọi API:", error);
         hideTypingIndicator();
-        addMessage("â ï¸ CĂ³ lá»—i xáº£y ra khi gá»i Groq: " + error.message, "bot");
+        addMessage("🛑 Có lỗi xảy ra khi gọi Groq: " + error.message, "bot");
       }
     }
 
@@ -295,7 +295,7 @@ nav a:hover{
       const typing = document.createElement("div");
       typing.id = "typing-indicator";
       typing.className = "message bot";
-      typing.textContent = "Trá»£ lĂ½ áº£o Ä‘ang gĂµ...";
+      typing.textContent = "Trợ lý ảo đang gõ...";
       chat.appendChild(typing);
       chat.scrollTop = chat.scrollHeight;
     }
