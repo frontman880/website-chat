@@ -1,146 +1,288 @@
-﻿<!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <title>Trợ lý ảo</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>G</text></svg>" />
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #e0f7fa, #e1bee7);
-      margin: 0;
-      padding: 0;
+﻿<!DOCTYPE html><!DOCTYPE html>
+
+<html lang="vi"><html lang="vi">
+
+<head><head>
+
+    <meta charset="UTF-8">  <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <title>AI Chat</title>  <title>Trợ lý ảo</title>
+
+    <style>  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>G</text></svg>" />
+
+        body {  <style>
+
+            margin: 0;    body {
+
+            padding: 20px;      font-family: Arial, sans-serif;
+
+            font-family: Arial, sans-serif;      background: linear-gradient(to right, #e0f7fa, #e1bee7);
+
+            background-color: #f0f0f0;      margin: 0;
+
+        }      padding: 0;
+
       display: flex;
-      flex-direction: column;
-      height: 100vh;
-    }
-    header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 20px;
+
+        #chat-container {      flex-direction: column;
+
+            max-width: 800px;      height: 100vh;
+
+            margin: 0 auto;    }
+
+            background-color: white;    header {
+
+            border-radius: 10px;      display: flex;
+
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);      align-items: center;
+
+            padding: 20px;      gap: 10px;
+
+        }      padding: 10px 20px;
+
       background-color: #fff;
-      border-bottom: 1px solid #ccc;
-    }
-    header img {
-      width: 24px;
-      height: 24px;
-    }
-    header h1 {
-      font-size: 20px;
+
+        #chat-history {      border-bottom: 1px solid #ccc;
+
+            height: 400px;    }
+
+            overflow-y: auto;    header img {
+
+            border: 1px solid #ccc;      width: 24px;
+
+            padding: 10px;      height: 24px;
+
+            margin-bottom: 20px;    }
+
+            white-space: pre-wrap;    header h1 {
+
+        }      font-size: 20px;
+
       margin: 0;
-      color: #333;
-    }
-    header a {
-      margin-left: auto;
+
+        #input-container {      color: #333;
+
+            display: flex;    }
+
+            gap: 10px;    header a {
+
+        }      margin-left: auto;
+
       font-size: 14px;
-      color: #0078d4;
-      text-decoration: none;
+
+        #user-input {      color: #0078d4;
+
+            flex-grow: 1;      text-decoration: none;
+
+            padding: 10px;    }
+
+            border: 1px solid #ccc;    #chat {
+
+            border-radius: 5px;      flex: 1;
+
+            font-size: 16px;      padding: 20px;
+
+        }      overflow-y: auto;
+
     }
-    #chat {
-      flex: 1;
-      padding: 20px;
-      overflow-y: auto;
-    }
-    .message {
-      max-width: 70%;
-      margin-bottom: 16px;
-      padding: 10px 15px;
-      border-radius: 15px;
-      white-space: pre-wrap;
-    }
-    .user {
-      background-color: #0078d4;
+
+        #send-button {    .message {
+
+            padding: 10px 20px;      max-width: 70%;
+
+            background-color: #007bff;      margin-bottom: 16px;
+
+            color: white;      padding: 10px 15px;
+
+            border: none;      border-radius: 15px;
+
+            border-radius: 5px;      white-space: pre-wrap;
+
+            cursor: pointer;    }
+
+            font-size: 16px;    .user {
+
+        }      background-color: #0078d4;
+
       color: white;
-      align-self: flex-end;
-      border-bottom-right-radius: 0;
-    }
+
+        #send-button:hover {      align-self: flex-end;
+
+            background-color: #0056b3;      border-bottom-right-radius: 0;
+
+        }    }
+
     .bot {
-      background-color: #f1f1f1;
-      color: #333;
-      align-self: flex-start;
-      border-bottom-left-radius: 0;
+
+        .user-message {      background-color: #f1f1f1;
+
+            color: #007bff;      color: #333;
+
+            margin-bottom: 10px;      align-self: flex-start;
+
+        }      border-bottom-left-radius: 0;
+
     }
-    .input-area {
-      padding: 10px;
-      background: #fff;
-      border-top: 1px solid #ccc;
+
+        .ai-message {    .input-area {
+
+            color: #28a745;      padding: 10px;
+
+            margin-bottom: 10px;      background: #fff;
+
+        }      border-top: 1px solid #ccc;
+
     }
-    .input-area > div {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-    textarea {
-      flex: 1;
-      resize: none;
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #0078d4;
-      color: white;
+
+        #thinking-indicator {    .input-area > div {
+
+            display: none;      display: flex;
+
+            color: #666;      gap: 10px;
+
+            margin-top: 10px;      align-items: center;
+
+        }    }
+
+    </style>    textarea {
+
+</head>      flex: 1;
+
+<body>      resize: none;
+
+    <div id="chat-container">      padding: 10px;
+
+        <div id="chat-history">      font-size: 16px;
+
+            <!-- Tin nhắn sẽ được hiển thị ở đây -->      border-radius: 8px;
+
+        </div>      border: 1px solid #ccc;
+
+        <div id="input-container">    }
+
+            <input type="text" id="user-input" placeholder="Nhập tin nhắn của bạn...">    button {
+
+            <button id="send-button">Gửi</button>      padding: 10px 20px;
+
+        </div>      font-size: 16px;
+
+        <div id="thinking-indicator">AI đang suy nghĩ...</div>      background-color: #0078d4;
+
+    </div>      color: white;
+
       border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    #searchToggle.active {
-      background-color: #000;
+
+    <script>      border-radius: 8px;
+
+        const chatHistory = document.getElementById('chat-history');      cursor: pointer;
+
+        const userInput = document.getElementById('user-input');    }
+
+        const sendButton = document.getElementById('send-button');    #searchToggle.active {
+
+        const thinkingIndicator = document.getElementById('thinking-indicator');      background-color: #000;
+
       color: #fff;
-    }
+
+        let isProcessing = false;    }
+
     #placeholder {
-      display: flex;
-      justify-content: center;
+
+        async function sendMessage() {      display: flex;
+
+            if (isProcessing || !userInput.value.trim()) return;      justify-content: center;
+
       align-items: center;
-      height: 100px;
-      text-align: center;
-      color: #666;
+
+            const userMessage = userInput.value.trim();      height: 100px;
+
+            appendMessage('Người dùng: ' + userMessage, 'user-message');      text-align: center;
+
+            userInput.value = '';      color: #666;
+
       margin-top: 40px;
-      font-style: italic;
-      font-size: 40px;
+
+            isProcessing = true;      font-style: italic;
+
+            thinkingIndicator.style.display = 'block';      font-size: 40px;
+
       font-weight: bold;
-      opacity: 1;
-      transition: opacity 0.8s ease;
-    }
-    #topbar {
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #ffffffcc;
+
+            try {      opacity: 1;
+
+                const response = await fetch('https://aichat-v6nq.onrender.com/chat', {      transition: opacity 0.8s ease;
+
+                    method: 'POST',    }
+
+                    headers: {    #topbar {
+
+                        'Content-Type': 'application/json'  display: flex;
+
+                    },  align-items: center;
+
+                    body: JSON.stringify({ message: userMessage })  padding: 10px 20px;
+
+                });  background-color: #ffffffcc;
+
   border-bottom: 1px solid #ccc;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
 
-.logo {
+                const data = await response.json();  position: sticky;
+
+                appendMessage('AI: ' + data.response, 'ai-message');  top: 0;
+
+            } catch (error) {  z-index: 10;
+
+                console.error('Error:', error);}
+
+                appendMessage('AI: Xin lỗi, đã có lỗi xảy ra. Vui lòng thử lại sau.', 'ai-message');
+
+            }.logo {
+
   font-size: 28px;
-  font-weight: bold;
-  margin-right: 10px;
-  color: #0078d4;
+
+            isProcessing = false;  font-weight: bold;
+
+            thinkingIndicator.style.display = 'none';  margin-right: 10px;
+
+        }  color: #0078d4;
+
   font-family: system-ui, sans-serif;
-}
 
-.title {
-  font-size: 22px;
-  font-weight: bold;
-  color: #333;
-}
+        function appendMessage(message, className) {}
+
+            const messageElement = document.createElement('div');
+
+            messageElement.textContent = message;.title {
+
+            messageElement.className = className;  font-size: 22px;
+
+            chatHistory.appendChild(messageElement);  font-weight: bold;
+
+            chatHistory.scrollTop = chatHistory.scrollHeight;  color: #333;
+
+        }}
+
 nav{
-  letter-spacing: 1px;
-  padding: 1rem;
-}
 
-nav ul{
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
+        sendButton.addEventListener('click', sendMessage);  letter-spacing: 1px;
+
+        userInput.addEventListener('keypress', (e) => {  padding: 1rem;
+
+            if (e.key === 'Enter') {}
+
+                sendMessage();
+
+            }nav ul{
+
+        });  list-style: none;
+
+    </script>  display: flex;
+
+</body>  justify-content: center;
+
+</html>  gap: 2rem;
 }
 
 nav a{
