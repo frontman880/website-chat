@@ -250,6 +250,11 @@
     const searchToggle = document.getElementById('searchToggle');
     let internetMode = false;
 
+    // ✅ Tự động chọn API URL theo môi trường
+    const API_URL = window.location.hostname.includes("localhost")
+        ? "http://localhost:3000/chat"
+        : "https://website-chat-8hyf.onrender.com/chat";
+
     searchToggle.addEventListener('click', () => {
         internetMode = !internetMode;
         searchToggle.classList.toggle('active');
@@ -301,13 +306,12 @@
             if (internetMode) {
                 updateTyping('Đang tìm kiếm trên Internet...');
                 webInfo = await searchGoogle(question);
-                webInfo = trimText(webInfo, 1000); // ✅ Rút gọn nội dung Google
-                // ❌ Không hiển thị kết quả Google ra giao diện
+                webInfo = trimText(webInfo, 1000);
             }
 
             updateTyping('Đang suy nghĩ...');
 
-            const response = await fetch('http://localhost:3000/chat', {
+            const response = await fetch(API_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -421,4 +425,5 @@
 </script>
 </body>
 </html>
+
 
